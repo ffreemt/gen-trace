@@ -3,10 +3,10 @@
 from typing import Any
 
 import numpy as np
-from nptyping import NDArray, Shape, Float
+from nptyping import Float, NDArray, Shape
 
 
-def get_slopes(
+def gen_slopes(
     cset_top10: NDArray[Shape["Any, 2"], Float]
 ) -> NDArray[Shape["Any, 2"], Float]:
     """Gen slopes for 2-d array[[x0, y0], [x1, y1],... ]."""

@@ -1,19 +1,32 @@
 """Generate trace funtion for cmat."""
 # pylint: disable=too-many-arguments, too-many-locals
-from typing import Any, Optional
+from typing import Any, Callable, Optional
 
 import numpy as np
 
 # import numpy.typing as npt
 from logzero import logger
+from nptyping import Float, NDArray, Shape
 from sklearn import cluster
-from nptyping import NDArray, Shape, Float
-
-from gen_trace.gen_chunksize import gen_chunksize
 
 # from c_euclidean import c_euclidean
 from gen_trace.c_euclidean import c_euclidean
+from gen_trace.gen_chunksize import gen_chunksize
 
+
+def with_func_attrs(**attrs: Any) -> Callable:
+    """Define with_func_attrs closure."""
+
+    def with_attrs(fct: Callable) -> Callable:
+        for key, val in attrs.items():
+            setattr(fct, key, val)
+        return fct
+
+    return with_attrs
+
+
+# @with_func_attrs(tset: Optional[NDArray[Shape["Any, 3"], Float]] = None)
+@with_func_attrs(tset=None)
 def gen_cset(
     # cmat_: npt.NDArray[(Any, Any), float],
     cmat_: NDArray[Shape["Any, Any"], Float],
@@ -22,9 +35,8 @@ def gen_cset(
     eps: Optional[float] = None,
     min_samples: Optional[int] = None,
     seg_size: Optional[int] = None,
-    metric = None,
-    # ) -> Callable:
-) -> NDArray[Shape["Any, Any"], Float]:
+    metric=None,
+) -> NDArray[Shape["Any, 3"], Float]:
     """Generate trace funtion for cmat.
 
     Args:
@@ -63,6 +75,8 @@ def gen_cset(
     tset = [*zip(range(n_col), cmat.argmax(axis=0), cmat.max(axis=0))]
     tset = np.array(tset)
 
+    gen_cset.tset = tset
+
     chunksize = gen_chunksize(len(tset), seg_size)
 
     tset_s = np.array_split(tset, chunksize)
@@ -72,7 +86,11 @@ def gen_cset(
     cset = []
     for elm in tset_s:
         try:
-            _ = cluster.DBSCAN(eps=eps, min_samples=min_samples, metric=metric).fit(elm).labels_
+            _ = (
+                cluster.DBSCAN(eps=eps, min_samples=min_samples, metric=metric)
+                .fit(elm)
+                .labels_
+            )
             cset.append(elm[_ > -1])
         except Exception as exc:
             logger.error(exc)

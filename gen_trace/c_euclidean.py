@@ -1,15 +1,17 @@
-from sys import maxsize
+"""Calculate customized Euclidean distance."""
 from math import dist
-from get_angle import get_angle
-import logzero
-from set_loglevel import set_loglevel
-from logzero import logger
+from sys import maxsize
 
-logzero.loglevel(set_loglevel())
+# import logzero
+# from set_loglevel import set_loglevel
+# from logzero import logger
+from .get_angle import get_angle
+
+# logzero.loglevel(set_loglevel())
 
 
 # def c_euclidean(x, y, scale=10.):
-def c_euclidean(x, y, delta=3., thr=19.5):
+def c_euclidean(x, y, delta=3.0, thr=19.5):
     """Calculate customized Euclidean distance.
 
     Args:
@@ -65,15 +67,15 @@ def c_euclidean(x, y, delta=3., thr=19.5):
     angle = get_angle(y, x)
     # if angle > 90 - delta and angle < 180 + delta:  # second quadrant
 
-    """
+    _ = """
     if 90 < angle < 180 + delta:  # second quadrant
         return maxsize
     if angle < delta or angle > 270 - delta:  # fourth quadrant
         return maxsize
-    """
+    # """
+
     if angle < delta or angle > 90 - delta:  # fourth quadrant
         return maxsize
-
 
     dist_ = dist(x, y)
     if dist_ > thr:

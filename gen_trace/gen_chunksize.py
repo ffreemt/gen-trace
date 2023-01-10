@@ -4,7 +4,7 @@ from math import ceil
 
 
 def gen_chunksize(n: int, seg_size: int = 600) -> int:
-    """"Gen chunksize (np.array_split) for n (number of elements) given a seg_size so that the resultant segment size closest to seg_size.
+    """ "Gen chunksize (np.array_split) for n (number of elements) given a seg_size so that the resultant segment size closest to seg_size.
 
     Args:
         n: no of elements

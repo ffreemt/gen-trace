@@ -10,6 +10,8 @@ from set_loglevel import set_loglevel
 
 from gen_trace import __version__, gen_trace
 
+del Path, logger, gen_trace
+
 logzero.loglevel(set_loglevel())
 
 app = typer.Typer(
