@@ -143,4 +143,5 @@ links/
 node_modules
 gen_trace-pad.py
 gen_trace/cmat2aset.py
+gen_trace/gen_trace.py
 gen_trace/gen_mask.py

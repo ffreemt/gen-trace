@@ -1,14 +1,14 @@
 [tool.poetry]
 name = "gen-trace"
 version = "0.1.0a1"
-description = "gen_trace"
+description = "Generate interpolate1d (trace) for a cmat"
 authors = ["ffreemt"]
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/ffreemt/gen-trace"
-include = ["gen_trace/gen_trace.pyc", "gen_trace/gen_mask.pyc", "LICENSE",
+include = ["gen_trace/gen_trace.pyc", "gen_trace/gen_mask.pyc", "gen_trace/cmat2aset.pyc", "LICENSE",
   {path="gen_trace", format=["wheel", "sdist"]}]
-exclude = ["gen_trace/gen_trace.py", "gen_trace/gen_mask.py"]
+exclude = ["gen_trace/gen_trace.py", "gen_trace/gen_mask.py", "gen_trace/cmat2aset.py"]
 
 [tool.poetry.dependencies]
 python = "^3.8.3"
