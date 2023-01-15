@@ -15,10 +15,10 @@ def gen_trace(
     Args:
         cset, clustered triple set, two-tuple set
         endpoint: along with (0, 0) for interp1d
-            e.g. endpoint = cmat.T.shape  (cmat_.shape)
+            e.g. endpoint = cmat.T.shape  (cmat_.shape): ncol0, ncol1
+
     Returns:
         trace functions
-
     """
     x = cset.T[0]
     y = cset.T[1]

@@ -16,7 +16,7 @@ def topn_sorted(
 
     Args:
         cset: nx3 np.array
-        topn, default 10, topn of cset.T[2]
+        topn: default 10, topn of cset.T[2]
 
     Retrns:
         sorted cset.T[0], topn of

@@ -3,10 +3,12 @@
 
 Generate interpolate1d (trace) for a cmat
 
+** for python 3.8 only ** (contact the dev for other python versions.)
+
 ## Install it
 
 ```shell
-pip install gen_trace
+pip install gen-trace
 # pip install git+https://github.com/ffreemt/gen-trace
 # poetry add git+https://github.com/ffreemt/gen-trace
 # git clone https://github.com/ffreemt/gen-trace && cd gen-trace
@@ -14,6 +16,6 @@ pip install gen_trace
 
 ## Use it
 ```python
-from gen_trace import gen_trace
+from gen_trace.cmat2aset import cmat2aset
 
 ```

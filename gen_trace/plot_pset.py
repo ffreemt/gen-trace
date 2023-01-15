@@ -12,10 +12,10 @@ def plot_pset(pset, scale=25, marker=None, cmap=None, alpha=1, new_figure=True):
     """Plot pset/tset.
 
     Args:
-        pset/test, nx3 np.array
-        scale, default 25, s=scale * pset.T[2]
+        pset: /test, nx3 np.array
+        scale:  default 25, s=scale * pset.T[2]
         cmap: default LinearSegmentedColormap.from_list('rg', ["red","darkgreen","green", "black"], N=10)
-        mark: default None,
+        marker: default None, marker shape
         alpha: default 1,
         new_figure: default True, if True plt.figure()
     """

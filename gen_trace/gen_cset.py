@@ -1,6 +1,8 @@
 """Generate trace funtion for cmat."""
 # pylint: disable=too-many-arguments, too-many-locals
-from typing import Any, Callable, Optional
+from __future__ import annotations
+
+from typing import Any, Callable, Optional, Union
 
 import numpy as np
 
@@ -29,13 +31,13 @@ def with_func_attrs(**attrs: Any) -> Callable:
 @with_func_attrs(tset=None)
 def gen_cset(
     # cmat_: npt.NDArray[(Any, Any), float],
-    cmat_: NDArray[Shape["Any, Any"], Float],
+    cmat: NDArray[Shape["Any, Any"], Float],
     delta0: Optional[float] = None,
     delta1: Optional[float] = None,
     eps: Optional[float] = None,
     min_samples: Optional[int] = None,
     seg_size: Optional[int] = None,
-    metric=None,
+    metric: Optional[Union[str, Callable]] = None,
 ) -> NDArray[Shape["Any, 3"], Float]:
     """Generate trace funtion for cmat.
 
@@ -44,8 +46,10 @@ def gen_cset(
             2-d array, n_row, n_col = cmat.shape, limit_x, limit_y = cmat.T.shape
         delta0: slope > slot_cmat (1 - delta0), default slope_cmat (1 - 1/2)
         delta1: maxsize > slope, default slope_cmat (1 + 1/2)
-        eps: dist between two points smaller than eps to be clustered as one group, default 20, the bigger the eps, the more points will be clustered
-        min_samples: min no of points in a group to be clustered as a group, default 3, the smaller the min_samples, the more points will be clustered
+        eps: default 20, dist between two points smaller than eps to be clustered as one group,
+            the bigger the eps, the more points will be clustered
+        min_samples: default 3, min no of points in a group to be clustered as a group,
+            the smaller the min_samples, the more points will be clustered
         seg_size: chunked into approximately seg_size elements for efficient clustering, default 600
 
     Returns:
@@ -54,7 +58,7 @@ def gen_cset(
     logger.debug(" entry ")
 
     # _ = """
-    cmat = cmat_.T
+    # cmat = cmat_.T
     n_row, n_col = cmat.shape
 
     slope_cmat = n_row / n_col

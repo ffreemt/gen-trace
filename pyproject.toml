@@ -1,11 +1,14 @@
 [tool.poetry]
-name = "gen_trace"
-version = "0.1.0-alpha.0"
+name = "gen-trace"
+version = "0.1.0a1"
 description = "gen_trace"
 authors = ["ffreemt"]
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/ffreemt/gen-trace"
+include = ["gen_trace/gen_trace.pyc", "gen_trace/gen_mask.pyc", "LICENSE",
+  {path="gen_trace", format=["wheel", "sdist"]}]
+exclude = ["gen_trace/gen_trace.py", "gen_trace/gen_mask.py"]
 
 [tool.poetry.dependencies]
 python = "^3.8.3"
@@ -20,6 +23,7 @@ matplotlib = "^3.6.2"
 
 [tool.poetry.group.dev.dependencies]
 nptyping = "^2.4.1"
+pyright = "^1.1.288"
 
 [tool.poe.executor]
 type = "poetry"
