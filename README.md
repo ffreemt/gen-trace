@@ -3,7 +3,7 @@
 
 Generate interpolate1d (trace) for a cmat
 
-** for python 3.8 only ** (contact the dev concerning other python versions.)
+**For python 3.8 only** (contact the dev concerning other python versions)
 
 ## Install it
 
