@@ -2,6 +2,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
+!cmat2aset.pyc
+!gen_mask.pyc
+!gen_trace.pyc
 
 # C extensions
 *.so
