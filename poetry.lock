@@ -344,7 +344,7 @@ setuptools = "*"
 name = "nptyping"
 version = "2.4.1"
 description = "Type hints for NumPy."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 
@@ -737,7 +737,7 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8.3"
-content-hash = "83bea237d7fbfba9a99f6eb0658e45ed71a6e794aa9fb9ae1b1bf1948b2b144b"
+content-hash = "246a87dd19619ddb0bdf928aab96444402e36da3d45bd0d37c8120ec50f7cccc"
 
 [metadata.files]
 astroid = [
